@@ -1,5 +1,15 @@
 To Install (Ms Visual Studio Code)
-1. CD into fresh created Project folder
-2. npm init playwright@latest
-3. Install the 'Playwright Test for VSCode'
-4. Have fun :)
+    1. CD into fresh created Project folder
+    2. npm init playwright@latest
+    3. Install the 'Playwright Test for VSCode'
+    4. Have fun :)
+
+Implementation of screenshot capturing (upon failure)
+source: https://testersdock.com/playwright-screenshot-capture/
+
+    1. Open 'Playwright.config.ts'
+    2. Identify 'use' clause
+    3. Add the screenshot: ‘only-on-failure’ flag
+    4. Save the config file
+    5. Run the test, upon failure, screenshot is saved in the 'screenshot' folder
+    
