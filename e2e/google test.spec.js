@@ -16,11 +16,17 @@ test('Google Page | Tools element present and spelled correctly', async ({ page 
   await page.getByRole('combobox', { name: 'Search' }).fill('test');
   await page.getByRole('listitem').filter({ hasText: 'testDelete' }).getByRole('option', { name: 'test' }).click();
   //verify that the searchbar is visible
-  await expect(searchBox).toBeVisible();
-  //verify that the toolbox element is visible
-  await expect(tools).toBeVisible();
-  //verify that the toolbox element contains name of 'Tools'
-  await expect(tools).toContainText('Tools');
+  await (tools).waitFor();
+  await (searchBox).waitFor();
+  await (googleLogo).waitFor();
+
   ////verify that the google logo is visible
-  await expect(googleLogo).toBeVisible();
+    expect(googleLogo).toBeVisible();
+  //verify thet the search box is visible
+    expect(searchBox).toBeVisible();
+  //verify that the toolbox element is visible
+    expect(tools).toBeVisible();
+  //verify that the toolbox element contains name of 'Tools'
+    expect(tools).toContainText('Tools');
+  
 });
