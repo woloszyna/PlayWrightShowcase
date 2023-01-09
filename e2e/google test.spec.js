@@ -8,12 +8,13 @@ test.beforeEach(async ({ page }, testInfo) => {
 test('Google Page | Tools element present and spelled correctly', async ({ page }) => {
 
   const tools = page.locator('.t2vtad');
-  const googleLogo = page.locator('.jfN4p');
+  const searchBox = page.getByRole('combobox', { name: 'Search' })
 
   await page.getByRole('button', { name: 'Accept all' }).click();
   await page.getByRole('combobox', { name: 'Search' }).click();
   await page.getByRole('combobox', { name: 'Search' }).fill('test');
   await page.getByRole('listitem').filter({ hasText: 'testDelete' }).getByRole('option', { name: 'test' }).click();
+  await expect(searchBox).toBeVisible();
   await expect(tools).toBeVisible();
   await expect(tools).toContainText('Tools');
 });
