@@ -23,5 +23,4 @@ test('Google Page | Tools element present and spelled correctly', async ({ page 
   await expect(tools).toContainText('Tools');
   ////verify that the google logo is visible
   await expect(googleLogo).toBeVisible();
-  await page.screenshot({path: 'screenshot/test.png'})
 });
