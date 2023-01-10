@@ -22,3 +22,17 @@ source: https://playwright.dev/docs/videos
     3. video: 'on-first-retry' flag
     4. Save the config file
     5. Run the test, upon failure, videos are recorded, however, saved in only one for the test failure in the '' folder
+
+
+Implementation of global variables store file
+    1. Install dotenv library
+        1.1. CD to the location of the project
+        1.2. Run 'npm install dotenv --save'
+             This will install dotenv library and add entries to package.json files
+        1.3. In the root directory of the project create '.env' file
+            STRUCTURE OF THE .env FILE
+            VARIABLE='Value'
+    2. Use global variables in the js spec files
+        2.1. at the line 1 add 'require('dotenv').config();'
+        2.2. In the test step where you want to parse value, use '.process.env.VARIABLE'
+        As a result, the value stored in the variable that is called, will be parsed into the field
