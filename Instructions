@@ -13,3 +13,12 @@ source: https://testersdock.com/playwright-screenshot-capture/
     4. Save the config file
     5. Run the test, upon failure, screenshot is saved in the 'screenshot' folder
     
+
+Implementation of capturing videos (upon failure)
+source: https://playwright.dev/docs/videos
+    
+    1. Open 'Playwright.config.ts'
+    2. Identify 'use' clause
+    3. video: 'on-first-retry' flag
+    4. Save the config file
+    5. Run the test, upon failure, videos are recorded, however, saved in only one for the test failure in the '' folder

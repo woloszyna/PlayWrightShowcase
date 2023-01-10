@@ -25,7 +25,7 @@ test('Google Page | Tools element present and spelled correctly', async ({ page 
   //verify thet the search box is visible
     expect(searchBox).toBeVisible();
   //verify that the toolbox element is visible
-    expect(tools).toBeVisible();
+    expect(toolsx).toBeVisible();
   //verify that the toolbox element contains name of 'Tools'
     expect(tools).toContainText('Tools');
   
