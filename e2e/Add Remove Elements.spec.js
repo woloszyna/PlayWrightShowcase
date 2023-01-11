@@ -50,10 +50,34 @@ test('Internet | Add/Remove Elements | Elements can be successfully removed from
   await page.locator('#elements > button:nth-child(2)').click();
 
     //Verify if 1 element is still visible
-  expect(page.locator('#elements').count(1));
+  expect(await page.locator('#elements > button').count()).toEqual(1);
 });
 
 
+test('Internet | Add/Remove Elements | All elements can be successfully removed from the webpage', async ({ page }) => {
+  const AddElementBtn = page.getByRole('button', { name: 'Add Element' })
+  const DeleteBtn = page.getByRole('button', { name: 'Delete' })
+
+  //Test Scenario:
+    //1. Add Multiple elements (5)
+  await AddElementBtn.click();
+  await AddElementBtn.click();
+  await AddElementBtn.click();
+  await AddElementBtn.click();
+  await AddElementBtn.click();
+
+  //2. Remove all elements but one
+  await page.locator('#elements > button:nth-child(5)').click();
+  await page.locator('#elements > button:nth-child(4)').click();
+  await page.locator('#elements > button:nth-child(3)').click();
+  await page.locator('#elements > button:nth-child(2)').click();
+  await page.locator('#elements > button:nth-child(1)').click();
+
+    //Verify if 1 element is still visible
+  //expect(page.locator('#elements').isVisible());
+  expect(await page.locator('#elements > button').count()).toEqual(0);
+  //count()).toBeGreaterThanOrEqual(1);
+});
 
 
 
