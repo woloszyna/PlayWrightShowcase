@@ -4,7 +4,8 @@ require('dotenv').config();
 test.describe('Dealing with Alerts', () => {
 
     test.beforeEach(async ({ page }) => {
-        await page.goto('https://kitchen.applitools.com/ingredients/alert');
+        await page.goto(process.env.KITCHEN_URL);
+        await page.getByRole('link', { name: 'Alert' }).click();
     });
 
     test('should trigger an alert', async ({ page }) => {

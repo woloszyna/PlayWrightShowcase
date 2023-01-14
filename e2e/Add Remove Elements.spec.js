@@ -3,7 +3,7 @@ require('dotenv').config();
 
 test.beforeEach(async ({ page }, testInfo) => {
   console.log(`Running ${testInfo.title}`);
-  await page.goto(process.env.BASE_URL);
+  await page.goto(process.env.HEROKUAPP_URL);
   await page.getByRole('link', { name: 'Add/Remove Elements' }).click();
 });
 

@@ -44,10 +44,12 @@ const config = {
     trace: 'on-first-retry',
 
     /*Screenshot recorder to record a screenshot only upon failure*/
-    screenshot: 'only-on-failure',
+    screenshot: 'on',
+      //'only-on-failure',
 
     /**/
-    video: 'retain-on-failure'
+    video: 'on',
+      //'retain-on-failure'
   },
 
   /* Configure projects for major browsers */
