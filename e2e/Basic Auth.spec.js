@@ -1,62 +1,50 @@
 import { test, expect } from '@playwright/test';
 require('dotenv').config();
 
-//test.beforeEach(async ({ page, browser }, testInfo) => { <-- John
-test.beforeEach(async ({ page }, testInfo) => {
-    console.log(`Running ${testInfo.title}`);
-    await page.goto(process.env.BASE_URL);
-    await page.getByRole('link', { name: 'Basic Auth' }).click();
-});
+test.describe('Dealing with Alerts', () => {
 
-/*
-test('Internet | Basic Auth | Page elements are present', async ({ page }) => {
+    test.beforeEach(async ({ page }) => {
+        await page.goto('https://kitchen.applitools.com/ingredients/alert');
+    });
 
-    page.on('dialog', async (dialog) => {
-        expect(dialog.message()).toEqual('Sing in to access this site')
-        //await dialog.accept('Testersdock')
-        dialog.type(process.env.ADMIN_LOGIN);
-        
-    })
-    //await page.locator('text=Click for JS Prompt').click()
-    //await expect(page.locator('#result')).toHaveText('You entered: Testersdock')
-
-});
-*/
-
-test('Dupa - Input text in prompt, Click OK and Validate Input Text', async ({page }) => {
-    page.on('dialog', async (dialog) => {
-        expect(dialog.message()).toEqual('Sing in to access this site')
-        await dialog.accept('Testersdock');
+    test('should trigger an alert', async ({ page }) => {
+        page.on('dialog', async (dialog) => {
+            expect(dialog.message()).toContain('Airfryers can make anything!')
+            await dialog.dismiss();
         })
-      //await page.locator('text=Click for JS Prompt').click()
-      //await expect(page.locator('#result')).toHaveText(
-        //'You entered: Testersdock'
-      //)
-})
-    
+        await page.click('#alert-button');
+    });
 
-/*
-test('Internet | Basic Auth | baseline', async ({ page }) => {
+    test('should trigger an confirmation with a message - dismiss', async ({ page }) => {
+        page.on('dialog', async (dialog) => {
+            expect(dialog.message()).toContain('Proceed with adding garlic?')
+            await dialog.dismiss();
+        })
+        await page.click('#confirm-button');
+    });
+
+    test('should trigger an confirmation with a message - accept', async ({ page }) => {
+        page.on('dialog', async (dialog) => {
+            expect(dialog.message()).toContain('Proceed with adding garlic?')
+            await dialog.accept();
+        })
+        await page.click('#confirm-button');
+    });
+
+    test('should trigger an alert with a prompt - dismiss', async ({ page }) => {
+        page.on('dialog', async (dialog) => {
+            expect(dialog.message()).toContain('What is your favorite food?')
+            await dialog.dismiss('dissmiss dissmiss dissmiss dissmiss dissmiss dissmiss ');
+        })
+        await page.click('#prompt-button');
+    });
+
+    test('should trigger an alert with a prompt - accept', async ({ page }) => {
+        page.on('dialog', async (dialog) => {
+            expect(dialog.message()).toContain('What is your favorite food?')
+            await dialog.accept('accept accept accept accept accept accept');
+        })
+        await page.click('#prompt-button');
+    });
 
 });
-
-test('Internet | Basic Auth | baseline', async ({ page }) => {
-
-});
-
-test('Internet | Basic Auth | baseline', async ({ page }) => {
-
-});
-
-test('Internet | Basic Auth | baseline', async ({ page }) => {
-
-});
-
-test('Internet | Basic Auth | baseline', async ({ page }) => {
-
-});
-
-test('Internet | Basic Auth | baseline', async ({ page }) => {
-
-});
-*/
