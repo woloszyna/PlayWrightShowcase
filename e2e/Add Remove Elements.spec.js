@@ -12,7 +12,9 @@ test('Internet | Add/Remove Elements | Correct Page displays', async ({ page }) 
     //Test Scenario:
     //1. Verify if page title is correct
   await expect(page).toHaveTitle('The Internet');
-    //2. Verify that SUbject element is present
+    //2. 'Add/Remove Elements' header element is present
+  await expect(page.getByRole('heading', { name: 'Add/Remove Elements' })).toBeVisible()
+    //3. Verify that SUbject element is present
   await expect(page.getByRole('button', { name: 'Add Element' })).toBeVisible();
 });
 
@@ -78,21 +80,3 @@ test('Internet | Add/Remove Elements | All elements can be successfully removed 
   expect(await page.locator('#elements > button').count()).toEqual(0);
   //count()).toBeGreaterThanOrEqual(1);
 });
-
-
-
-/*Test Scenario:
-
-1. Access Web Page
-2. Add 10 elements
-3. Remove first 5 elements
-*/
-
-
-
-/*Test Scenario:
-
-1. Access Web Page
-2. Add Multiple elements
-3. Remove all elements
-*/

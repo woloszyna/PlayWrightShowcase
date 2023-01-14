@@ -36,3 +36,13 @@ Implementation of global variables store file
         2.1. at the line 1 add 'require('dotenv').config();'
         2.2. In the test step where you want to parse value, use '.process.env.VARIABLE'
         As a result, the value stored in the variable that is called, will be parsed into the field
+
+
+
+
+
+
+TODO: 
+1. Add Allure Reporting to Playwright
+   https://medium.com/geekculture/how-to-generate-html-report-in-playwright-f9ec9b82427a
+2. 
