@@ -25,6 +25,7 @@ source: https://playwright.dev/docs/videos
 
 
 Implementation of global variables store file
+Source: https://stackoverflow.com/questions/22312671/setting-environment-variables-for-node-to-retrieve
     1. Install dotenv library
         1.1. CD to the location of the project
         1.2. Run 'npm install dotenv --save'
@@ -38,10 +39,21 @@ Implementation of global variables store file
         As a result, the value stored in the variable that is called, will be parsed into the field
 
 
+Adding the Ms Edge to web browsers
+source: https://learn.microsoft.com/en-us/microsoft-edge/playwright/
+    1. Open playwright.config.ts
+    2. Identify the 'projects:' case within the file
+    3. Add the following to the case:
+        {
+      name: 'Microsoft Edge',
+      use: {
+        // Supported Microsoft Edge channels are: msedge, msedge-beta, msedge-dev, msedge-canary
+        channel: 'msedge',
+      },
+    },
 
 
-
-
+============================================================================================================
 TODO: 
 1. Add Allure Reporting to Playwright
    https://medium.com/geekculture/how-to-generate-html-report-in-playwright-f9ec9b82427a

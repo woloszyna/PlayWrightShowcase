@@ -53,7 +53,14 @@ const config = {
   },
 
   /* Configure projects for major browsers */
-  projects: [
+  projects: [ 
+    {
+      name: 'Microsoft Edge',
+      use: {
+        // Supported Microsoft Edge channels are: msedge, msedge-beta, msedge-dev, msedge-canary
+        channel: 'msedge',
+      },
+    },
     {
       name: 'chromium',
       use: {
