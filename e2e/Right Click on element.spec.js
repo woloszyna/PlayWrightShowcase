@@ -37,5 +37,5 @@ test.describe('Dealing with checkboxes', () => {
         await page.locator('#hot-spot').click({ button: "right" });
 
     });
-
+//test
 });
