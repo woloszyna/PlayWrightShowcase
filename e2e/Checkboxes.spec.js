@@ -15,16 +15,16 @@ test.describe('Dealing with checkboxes', () => {
         await checkbox1.check();
         await checkbox2.uncheck();
 
-        expect(checkbox1).toBeChecked();
-        expect(checkbox2).not.toBeChecked();
+        await expect(checkbox1).toBeChecked();
+        await expect(checkbox2).not.toBeChecked();
     })
 
     test('Can check second checkbox ', async ({ page }) => {
         const checkbox1 = page.getByRole('checkbox').first();
         const checkbox2 = page.getByRole('checkbox').nth(1);
         
-        expect(checkbox1).not.toBeChecked();
-        expect(checkbox2).toBeChecked();
+        await expect(checkbox1).not.toBeChecked();
+        await expect(checkbox2).toBeChecked();
     })
 
     test('Can check both checkboxes ', async ({ page }) => {
@@ -33,8 +33,8 @@ test.describe('Dealing with checkboxes', () => {
         
         await checkbox1.check();
 
-        expect(checkbox1).toBeChecked();
-        expect(checkbox2).toBeChecked();
+        await expect(checkbox1).toBeChecked();
+        await expect(checkbox2).toBeChecked();
         
     })
 
@@ -42,58 +42,58 @@ test.describe('Dealing with checkboxes', () => {
         const checkbox1 = page.getByRole('checkbox').first();
         const checkbox2 = page.getByRole('checkbox').nth(1);
 
-        expect(checkbox1).not.toBeChecked();
-        expect(checkbox2).toBeChecked();
+        await expect(checkbox1).not.toBeChecked();
+        await expect(checkbox2).toBeChecked();
         
         await checkbox1.check();
         await checkbox2.uncheck();
 
         await page.reload();
 
-        expect(checkbox1).not.toBeChecked();
-        expect(checkbox2).toBeChecked();
+        await expect(checkbox1).not.toBeChecked();
+        await expect(checkbox2).toBeChecked();
     })
 
     test('Page returns to the original state when reloaded - bottom checkbox checked ', async ({ page }) => {
         const checkbox1 = page.getByRole('checkbox').first();
         const checkbox2 = page.getByRole('checkbox').nth(1);
 
-        expect(checkbox1).not.toBeChecked();
-        expect(checkbox2).toBeChecked();
+        await expect(checkbox1).not.toBeChecked();
+        await expect(checkbox2).toBeChecked();
 
         await page.reload();
 
-        expect(checkbox1).not.toBeChecked();
-        expect(checkbox2).toBeChecked();
+        await expect(checkbox1).not.toBeChecked();
+        await expect(checkbox2).toBeChecked();
     })
 
     test('Page returns to the original state when reloaded - both checkboxes checked ', async ({ page }) => {
         const checkbox1 = page.getByRole('checkbox').first();
         const checkbox2 = page.getByRole('checkbox').nth(1);
 
-        expect(checkbox1).not.toBeChecked();
-        expect(checkbox2).toBeChecked();
+        await expect(checkbox1).not.toBeChecked();
+        await expect(checkbox2).toBeChecked();
         
         await checkbox1.check();
 
         await page.reload();
 
-        expect(checkbox1).not.toBeChecked();
-        expect(checkbox2).toBeChecked();
+        await expect(checkbox1).not.toBeChecked();
+        await expect(checkbox2).toBeChecked();
     })
 
     test('Page returns to the original state when reloaded - no checkboxes checked ', async ({ page }) => {
         const checkbox1 = page.getByRole('checkbox').first();
         const checkbox2 = page.getByRole('checkbox').nth(1);
 
-        expect(checkbox1).not.toBeChecked();
-        expect(checkbox2).toBeChecked();
+        await expect(checkbox1).not.toBeChecked();
+        await expect(checkbox2).toBeChecked();
         
         await checkbox2.uncheck();
 
         await page.reload();
 
-        expect(checkbox1).not.toBeChecked();
-        expect(checkbox2).toBeChecked();
+        await expect(checkbox1).not.toBeChecked();
+        await expect(checkbox2).toBeChecked();
     })
 })
