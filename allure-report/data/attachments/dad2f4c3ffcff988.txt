@@ -1,1 +1,0 @@
-Running Clickable element has correct dimentions
