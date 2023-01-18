@@ -1,1 +1,0 @@
-Running Alert populates when user right-clicks on the element
