@@ -52,9 +52,38 @@ source: https://learn.microsoft.com/en-us/microsoft-edge/playwright/
       },
     },
 
+Add Allure Reporting to Playwright
+source: https://medium.com/geekculture/how-to-generate-html-report-in-playwright-f9ec9b82427a
+
+Prerequisites:
+1. Have to have JAVA SDK installed on local machine: https://www.oracle.com/java/technologies/downloads/
+2. Set the JAVA_HOME variable in your environment to match the location of your Java installation
+    https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html
+
+Process:
+    1. Edit package.json
+    Add the following into the devDependencies:
+    'experimental-alure-playwright' (this should add a version of 0.0.3)
+
+         "devDependencies": {
+        "@playwright/test": "^1.29.2",
+        "experimental-allure-playwright": "0.0.3"
+        },
+    ALTERNATIVELY: 
+    Install allure for playwright: 
+    'npm i -D experimental-allure-playwright'
+
+    2. Install allure command line
+    'npm i -D allure-commandline'
+
+RUNNING: 
+
+    1. Run using the command: 'npx playwright test --reporter=experimental-allure-playwright'
+WHEN run is completed
+    2. Run 'npx allure generate ./allure-results'
+    3. Run 'npx allure open ./allure-report'
 
 ============================================================================================================
 TODO: 
-1. Add Allure Reporting to Playwright
-   https://medium.com/geekculture/how-to-generate-html-report-in-playwright-f9ec9b82427a
+1. 
 2. 
