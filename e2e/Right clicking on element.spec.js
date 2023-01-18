@@ -1,9 +1,6 @@
 import { test, expect } from "@playwright/test";
 require('dotenv').config();
 
-test.describe('Dealing with checkboxes', () => {
-    
-
     test.beforeEach(async ({ page }, testInfo) => {
         console.log(`Running ${testInfo.title}`);
         await page.goto(process.env.HEROKUAPP_URL);
@@ -37,5 +34,3 @@ test.describe('Dealing with checkboxes', () => {
         await page.locator('#hot-spot').click({ button: "right" });
 
     });
-    
-});

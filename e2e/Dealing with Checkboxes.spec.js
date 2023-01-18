@@ -1,8 +1,6 @@
 import { test, expect } from "@playwright/test";
 require('dotenv').config();
 
-test.describe('Dealing with checkboxes', () => {
-    
     test.beforeEach(async ({ page }) => {
         await page.goto(process.env.HEROKUAPP_URL);
         await page.getByRole('link', { name: 'Checkboxes' }).click();
@@ -49,7 +47,6 @@ test.describe('Dealing with checkboxes', () => {
         await checkbox2.uncheck();
 
         await page.reload();
-
         await expect(checkbox1).not.toBeChecked();
         await expect(checkbox2).toBeChecked();
     })
@@ -82,18 +79,17 @@ test.describe('Dealing with checkboxes', () => {
         await expect(checkbox2).toBeChecked();
     })
 
-    test('Page returns to the original state when reloaded - no checkboxes checked ', async ({ page }) => {
-        const checkbox1 = page.getByRole('checkbox').first();
-        const checkbox2 = page.getByRole('checkbox').nth(1);
+test('Page returns to the original state when reloaded - no checkboxes checked ', async ({ page }) => {
+    const checkbox1 = page.getByRole('checkbox').first();
+    const checkbox2 = page.getByRole('checkbox').nth(1);
 
-        await expect(checkbox1).not.toBeChecked();
-        await expect(checkbox2).toBeChecked();
+    await expect(checkbox1).not.toBeChecked();
+    await expect(checkbox2).toBeChecked();
         
-        await checkbox2.uncheck();
+    await checkbox2.uncheck();
 
-        await page.reload();
+    await page.reload();
 
-        await expect(checkbox1).not.toBeChecked();
-        await expect(checkbox2).toBeChecked();
-    })
-})
+    await expect(checkbox1).not.toBeChecked();
+    await expect(checkbox2).toBeChecked();
+});
