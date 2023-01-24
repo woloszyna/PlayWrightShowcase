@@ -14,5 +14,16 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3"
-  }
+  },
+    "scripts": {
+        "Run all test": "npx playwright test",
+        "Run all test in Chromium": "npx playwright test --project=chromium",
+        "Run all test in Firefox": "npx playwright test --project=firefox",
+        "Run all test in Ms Edge": "npx playwright test --project=Microsoft/ /Edge",
+        "Run all test in WebKit": "npx playwright test --project=webkit",
+        "Run all tests with allure": "npx playwright test --reporter=experimental-allure-playwright --project=chromium --project=Microsoft Edge",
+        "Build Allure Report from recent run": "npx allure generate ./allure-results --clean",
+        "Open generated Allure Report": "npx allure open ./allure-report"
+    }
+
 }
