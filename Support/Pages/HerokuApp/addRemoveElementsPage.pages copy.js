@@ -1,7 +1,5 @@
 const { expect } = require('@playwright/test');
-
 exports.addRemoveElementsPage = class addRemoveElementsPage {
-
     
     /**
    * @param {import('@playwright/test').Page} page
@@ -12,7 +10,8 @@ exports.addRemoveElementsPage = class addRemoveElementsPage {
         this.heading = page.getByRole('heading');
         this.addElementBtn = page.getByRole('button', { name: 'Add Element' });
         this.deleteBtn = page.getByRole('button', { name: 'Delete' });
-        this.elementCount = page.locator('#elements');
+        this.removeElements = page.locator('.added-manually');
+        
     }
 
     async addElement() {
@@ -21,5 +20,13 @@ exports.addRemoveElementsPage = class addRemoveElementsPage {
 
     async deleteElement() {
         await this.deleteBtn.click();
+    }
+
+    async addFiveElements() {
+        await this.addElementBtn.click();
+        await this.addElementBtn.click();
+        await this.addElementBtn.click();
+        await this.addElementBtn.click();
+        await this.addElementBtn.click();
     }
 }

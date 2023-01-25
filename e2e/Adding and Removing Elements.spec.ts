@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Browser } from '@playwright/test';
 import { addRemoveElementsPage } from '../Support/Pages/HerokuApp/addRemoveElementsPage.pages';
 import { landingPage } from '../Support/Pages/HerokuApp/landingPage.pages';
 require('dotenv').config();
@@ -13,7 +13,7 @@ test.beforeEach(async ({ page }, testInfo) => {
 });
 
 test('Correct page displayed', async ({ page }) => {
-    const landing = new landingPage(page);
+    //const landing = new landingPage(page);
     const addRemoveElements = new addRemoveElementsPage(page);
 
         await expect(page).toHaveTitle('The Internet');
@@ -22,7 +22,7 @@ test('Correct page displayed', async ({ page }) => {
 });
     
 test('One Element Can be successfully added and removed', async ({ page }) => {
-    const landing = new landingPage(page);
+    //const landing = new landingPage(page);
     const addRemoveElements = new addRemoveElementsPage(page);
 
     await addRemoveElements.addElement();
@@ -31,19 +31,10 @@ test('One Element Can be successfully added and removed', async ({ page }) => {
 });
 
 test('Multiple Elements Can be successfully added', async ({ page }) => {
-    const landing = new landingPage(page);
+    //const landing = new landingPage(page);
     const addRemoveElements = new addRemoveElementsPage(page);
 
-        await addRemoveElements.addElement();
-        await addRemoveElements.addElement();
-        await addRemoveElements.addElement();
-        await addRemoveElements.addElement();
-        await addRemoveElements.addElement();
+    await addRemoveElements.addFiveElements();
+    await expect(addRemoveElements.removeElements).toHaveCount(5);
 
-        //await expect addRemoveElements.elementCount.count(5)); <-- This ain't working
-
-    // await addRemoveElements.deleteElement();
-    // await addRemoveElements.deleteElement();
-    // await addRemoveElements.deleteElement();
-    // await addRemoveElements.deleteElement();
 });
