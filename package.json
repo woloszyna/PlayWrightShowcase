@@ -3,12 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "Run all test": "npx playwright test",
+    "Run all test in Chromium": "npx playwright test --project=chromium",
+    "Run all test in Firefox": "npx playwright test --project=firefox",
+    "Run all test in Ms Edge": "npx playwright test --project=MsEdge",
+    "Run all test in WebKit": "npx playwright test --project=webkit",
+    "Run all tests with allure": "npx playwright test --reporter=experimental-allure-playwright --project=chromium --project=Microsoft Edge",
+    "Build Allure Report from recent run": "npx allure generate ./allure-results --clean",
+    "Open generated Allure Report": "npx allure open ./allure-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.29.2",
+    "@playwright/test": "^1.30.0",
     "allure-commandline": "^2.20.1",
     "experimental-allure-playwright": "0.0.3"
   },
