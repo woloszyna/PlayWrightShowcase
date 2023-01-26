@@ -1,5 +1,6 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -41,7 +42,7 @@ const config: PlaywrightTestConfig = {
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
 
-    /*Screenshot recorder to record a screenshot only upon failure*/
+    /*Screenshot recorder to record a screenshot either always or only upon a failure*/
     screenshot: 'on',
       //'only-on-failure',
 

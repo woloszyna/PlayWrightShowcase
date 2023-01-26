@@ -1,6 +1,4 @@
 import { expect, Locator, Page } from '@playwright/test';
-require('dotenv').config();
-
 export class addRemoveElementsPage {
     readonly page: Page;
     readonly heading: Locator;
@@ -14,14 +12,15 @@ export class addRemoveElementsPage {
         this.addElementBtn = page.getByRole('button', { name: 'Add Element' });
         this.deleteBtn = page.getByRole('button', { name: 'Delete' });
         this.removeElements = page.locator('.added-manually');
-    }
+    };
+
     async addElement() {
         await this.addElementBtn.click();
-    }
+    };
 
     async deleteElement() {
         await this.deleteBtn.click();
-    }
+    };
 
     async addFiveElements() {
         await this.addElementBtn.click();
@@ -29,5 +28,20 @@ export class addRemoveElementsPage {
         await this.addElementBtn.click();
         await this.addElementBtn.click();
         await this.addElementBtn.click();
+    };
+
+    async removeFourElements() {
+        await this.deleteBtn.nth(4).click();
+        await this.deleteBtn.nth(3).click();
+        await this.deleteBtn.nth(2).click();
+        await this.deleteBtn.nth(1).click();
+    };
+
+    async removeFiveElements() {
+        await this.deleteBtn.nth(4).click();
+        await this.deleteBtn.nth(3).click();
+        await this.deleteBtn.nth(2).click();
+        await this.deleteBtn.nth(1).click();
+        await this.deleteBtn.nth(0).click();
     }
 }

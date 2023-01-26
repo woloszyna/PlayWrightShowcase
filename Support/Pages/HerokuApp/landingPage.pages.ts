@@ -3,6 +3,7 @@ require('dotenv').config();
 
 
 export class landingPage {
+    readonly url: string | undefined;
     readonly page: Page;
     readonly ABTesting: Locator;
     readonly addRemoveElements: Locator;
@@ -50,6 +51,7 @@ export class landingPage {
     readonly WYSIWYGEditor: Locator;
 
     constructor(page: Page) {
+        this.url = process.env.HEROKUAPP_URL;
         this.page = page;
         this.ABTesting = page.getByRole('link', {name: 'A/B Testing'});
         this.addRemoveElements = page.getByRole('link', { name: 'Add/Remove Elements' });
@@ -97,7 +99,7 @@ export class landingPage {
         this.WYSIWYGEditor = page.getByRole('link', {name: 'WYSIWYG Editor'});
     }
     async goTo() {
-        await this.page.goto(process.env.HEROKUAPP_URL);
+        await this.page.goto(this.url);
         //TODO: Implement dotenv correctly. At current it reads values but it is marked as error in the code.
     };
 
