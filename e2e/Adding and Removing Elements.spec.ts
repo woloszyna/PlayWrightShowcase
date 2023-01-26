@@ -15,6 +15,31 @@ test('Correct page displayed', async ({ page }) => {
         await expect(addRemoveElements.heading).toHaveText('Add/Remove Elements');
         await expect(addRemoveElements.addElementBtn).toBeVisible();
 });
+
+test('The Add Element Button has correct attributes', async ({ page }) => {
+    const addRemoveElements = new addRemoveElementsPage(page);
+        await expect(addRemoveElements.addElementBtn).toHaveCSS('background-color', 'rgb(43, 166, 203)');
+        await expect(addRemoveElements.addElementBtn).toHaveCSS('border-color', 'rgb(34, 132, 161)');
+        await expect(addRemoveElements.addElementBtn).toHaveCSS('color', 'rgb(255, 255, 255)');
+        await expect(addRemoveElements.addElementBtn).toHaveCSS('font-size', '16px');
+        await expect(addRemoveElements.addElementBtn).toHaveCSS('text-align', 'center');
+        await expect(addRemoveElements.addElementBtn).toHaveCSS('font-family', '\"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif');
+        await expect(addRemoveElements.addElementBtn).toHaveCSS('font-weight', '700');
+});
+
+test('Delete Element Button has correct attributes', async ({ page }) => {
+    const addRemoveElements = new addRemoveElementsPage(page);
+        await addRemoveElements.addElement();
+        await expect(addRemoveElements.removeElements).toBeVisible();
+        await expect(addRemoveElements.removeElements).toHaveCSS('background-color', 'rgb(43, 166, 203)');
+        await expect(addRemoveElements.removeElements).toHaveCSS('border-color', 'rgb(34, 132, 161)');
+        await expect(addRemoveElements.removeElements).toHaveCSS('color', 'rgb(255, 255, 255)');
+        await expect(addRemoveElements.removeElements).toHaveCSS('font-size', '16px');
+        await expect(addRemoveElements.removeElements).toHaveCSS('text-align', 'center');
+        await expect(addRemoveElements.removeElements).toHaveCSS('font-family', '\"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif');
+        await expect(addRemoveElements.removeElements).toHaveCSS('font-weight', '700');
+
+});
     
 test('One Element Can be successfully added and removed', async ({ page }) => {
     const addRemoveElements = new addRemoveElementsPage(page);
@@ -45,6 +70,5 @@ test('Elements that are not removed are succesfully retained on the page', async
 });
 
 test.afterEach(async ({ page }, result) => {
-    console.log(`Test ${result.status}.`);//
+    console.log(`Test Result: ${result.status}`);
 });
-//

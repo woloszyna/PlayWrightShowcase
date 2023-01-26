@@ -31,17 +31,17 @@ export class addRemoveElementsPage {
     };
 
     async removeFourElements() {
-        await this.deleteBtn.nth(4).click();
-        await this.deleteBtn.nth(3).click();
-        await this.deleteBtn.nth(2).click();
-        await this.deleteBtn.nth(1).click();
+        await this.deleteBtn.nth(-1).click();
+        await this.deleteBtn.nth(-1).click();
+        await this.deleteBtn.nth(-1).click();
+        await this.deleteBtn.nth(-1).click();
     };
 
     async removeFiveElements() {
-        await this.deleteBtn.nth(4).click();
-        await this.deleteBtn.nth(3).click();
-        await this.deleteBtn.nth(2).click();
-        await this.deleteBtn.nth(1).click();
-        await this.deleteBtn.nth(0).click();
+        await this.deleteBtn.nth(-1).click();
+        await this.deleteBtn.nth(-1).click();
+        await this.deleteBtn.nth(-1).click();
+        await this.deleteBtn.nth(-1).click();
+        await this.deleteBtn.nth(-1).click();
     }
 }
