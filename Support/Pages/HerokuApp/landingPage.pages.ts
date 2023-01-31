@@ -3,7 +3,7 @@ require('dotenv').config();
 
 
 export class landingPage {
-    readonly url: string | undefined;
+    readonly url: string;
     readonly page: Page;
     readonly ABTesting: Locator;
     readonly addRemoveElements: Locator;

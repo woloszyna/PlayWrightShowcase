@@ -4,9 +4,9 @@ import { landingPage } from '../Support/Pages/HerokuApp/landingPage.pages';
 
 test.beforeEach(async ({ page }, testInfo) => {
     console.log(`Running ${testInfo.title}.`);
-    const landing = new landingPage(page);
-        await landing.goTo();
-        await landing.accessAddRemoveElements();
+    const landingHERO = new landingPage(page);
+        await landingHERO.goTo();
+        await landingHERO.accessAddRemoveElements();
 });
 
 test('Correct page displayed', async ({ page }) => {
