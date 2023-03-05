@@ -84,3 +84,10 @@ WHEN run is completed
     3. Run 'npx allure open ./allure-report'
 
 =======================================================================================================
+Using Tags to organise tests: 
+https://medium.com/geekculture/grouping-and-organising-test-suite-in-playwright-dccf2c55d776
+
+
+https://demo.nopcommerce.com/
+
+Epic: E2E booking scenario

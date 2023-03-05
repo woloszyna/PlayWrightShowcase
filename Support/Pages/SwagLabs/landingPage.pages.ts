@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
 require('dotenv').config();
 
-export class landigPage {
+export class landingPage {
     readonly page: Page;
     readonly loginFld: Locator;
     readonly password: Locator;
