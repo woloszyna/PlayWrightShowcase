@@ -14,7 +14,7 @@ export class jevelryPage {
         this.rentBtn = page.getByRole('button', {name: 'Rent'});
     }
 
-    accessElegantGemstoneNecklaceOrder() {
+    async accessElegantGemstoneNecklaceOrder() {
         this.rentBtn.click();
     }
 }

@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { elegantGemstoneNecklaceOrder } from '../Support/Pages/Nopcommerce/elegantGemstoneNecklaceOrder.pages';
 import { jevelryPage } from '../Support/Pages/Nopcommerce/jevelryPage.pages';
 import { landingPage } from '../Support/Pages/Nopcommerce/landingPage.pages';
+import { shoppingCart } from '../Support/Pages/Nopcommerce/shoppingCart.pages';
 
 test.beforeEach(async ({ page }, testInfo) => {
     console.log(`Running ${testInfo.title}.`);
@@ -12,7 +13,8 @@ test.beforeEach(async ({ page }, testInfo) => {
 test('Successful Order journey', async ({ page }) => {
     const landing = new landingPage(page);
     const jevelry = new jevelryPage(page);
-    const elegant  = new elegantGemstoneNecklaceOrder(page);
+    const elegant = new elegantGemstoneNecklaceOrder(page);
+    const shopCart = new shoppingCart(page);
 
     await expect(landing.jevelryNavBtn).toBeVisible();
     await landing.accessJevelryPage();
@@ -27,5 +29,10 @@ test('Successful Order journey', async ({ page }) => {
     await elegant.clickRent();
     await expect(elegant.shoppingCart).toBeVisible();
     await elegant.accessShoppingCart();
-
+    await page.waitForTimeout(1000);
+    await expect(shopCart.table).toBeVisible();
+    await shopCart.termsAndConditions();
+    await page.waitForTimeout(1000);
+    await shopCart.accessCheckout();
+    await page.waitForTimeout(1000);
 });
