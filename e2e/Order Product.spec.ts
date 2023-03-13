@@ -5,6 +5,7 @@ import { landingPage } from '../Support/Pages/Nopcommerce/landingPage.pages';
 import { shoppingCart } from '../Support/Pages/Nopcommerce/shoppingCart.pages';
 import { checkOut } from '../Support/Pages/Nopcommerce/checkOut.pages';
 import { registerPage } from '../Support/Pages/Nopcommerce/registerPage.pages';
+import { regConfirmationPage } from '../Support/Pages/Nopcommerce/regConfirmationPage.pages';
 
 test.beforeEach(async ({ page }, testInfo) => {
     console.log(`Running ${testInfo.title}.`);
@@ -19,6 +20,7 @@ test('Successful Order journey', async ({ page }) => {
     const shopCart = new shoppingCart(page);
     const checkout = new checkOut(page);
     const regPage = new registerPage(page);
+    const regConfPage = new regConfirmationPage(page);
 
     await expect(landing.jevelryNavBtn).toBeVisible();
     await landing.accessJevelryPage();
@@ -41,9 +43,26 @@ test('Successful Order journey', async ({ page }) => {
     await expect(checkout.registerBtn).toBeVisible();
     await checkout.accessRegisterPage();
     await expect(regPage.regModal).toBeVisible();
-    await regPage.provideRegisterMaleDetails();
-    await page.waitForTimeout(1000);
+    await regPage.provideMaleGender();
+    await expect(regPage.gender).toBeChecked();
+    await regPage.provideMaleFirstName();
+    await expect(regPage.firstName).toHaveValue('Tester');
+    await regPage.provideMaleLastName();
+    await expect(regPage.lastName).toHaveValue('McTest');
+    await regPage.provideMaleDOB();
+    await expect(regPage.DOBDay).toHaveValue('1');
+    await expect(regPage.DOBMonth).toHaveValue('1');
+    await expect(regPage.DOBYear).toHaveValue('1984');
+    await regPage.provideMaleEmailAddress();
+    await expect(regPage.emailAddress).not.toBeEmpty();
+    await regPage.provideMaleCompanyName();
+    await expect(regPage.companyName).toHaveValue('TestCompany');
+    await regPage.uncheckNewsletter();
+    await expect(regPage.newsletter).not.toBeChecked();
+    await regPage.provideMalePassword();
+    await expect(regPage.password).toHaveValue('password123');
+    await regPage.provideMalePasswordConfirmatiom();
+    await expect(regPage.confirmPassword).toHaveValue('password123');
     await regPage.clickRegButton();
-    await page.waitForTimeout(1000);
-
+    await expect(regConfPage.continueBtn).toBeVisible();
 });

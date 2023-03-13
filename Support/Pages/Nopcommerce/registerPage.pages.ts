@@ -28,30 +28,55 @@ export class registerPage {
         this.companyName = page.locator('#Company');
         this.newsletter = page.locator('#Newsletter');
         this.password = page.locator('#Password');
-        this.confirmPassword = page.locator('ConfirmPassword');
+        this.confirmPassword = page.locator('#ConfirmPassword');
         this.regBtn = page.getByRole('button', { name: 'Register' });
+        
     }
 
-    async provideRegisterMaleDetails() {
-        const password = new Date().toISOString();
-        const emailAddress = password + '@gmail.com';
-            
+
+    async provideMaleGender() {
         this.gender.check();
+    }
+
+    async provideMaleFirstName() {
         this.firstName.fill('Tester');
+    }
+
+    async provideMaleLastName() {
         this.lastName.fill('McTest');
+    }
+
+    async provideMaleDOB() {
         this.DOBDay.selectOption('1');
         this.DOBMonth.selectOption('1');
         this.DOBYear.selectOption('1984');
+    }
+
+    async provideMaleEmailAddress() {
+        const date = ((new Date()).getTime() & 0xffff);
+        const emailAddress = date + '@gmail.com';
+
         this.emailAddress.fill(emailAddress);
+    }
+
+    async provideMaleCompanyName() {
         this.companyName.fill('TestCompany');
+    }
+
+    async uncheckNewsletter() {
         this.newsletter.uncheck();
-        this.password.fill(password);
-        this.confirmPassword.fill(password);
+    }
+
+    async provideMalePassword() {
+        this.password.fill('password123');
+    }
+
+    async provideMalePasswordConfirmatiom() {
+        this.confirmPassword.fill('password123');
     }
 
     async clickRegButton() {
         this.regBtn.click();
     }
-
 
 }
