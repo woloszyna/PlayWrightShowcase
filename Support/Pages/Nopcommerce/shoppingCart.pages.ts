@@ -22,5 +22,4 @@ export class shoppingCart {
     async accessCheckout() {
         this.checkOut.click();
     }
-
 }
