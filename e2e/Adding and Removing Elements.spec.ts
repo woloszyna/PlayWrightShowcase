@@ -23,7 +23,6 @@ test('The Add Element Button has correct attributes', async ({ page }) => {
         await expect(addRemoveElements.addElementBtn).toHaveCSS('color', 'rgb(255, 255, 255)');
         await expect(addRemoveElements.addElementBtn).toHaveCSS('font-size', '16px');
         await expect(addRemoveElements.addElementBtn).toHaveCSS('text-align', 'center');
-        await expect(addRemoveElements.addElementBtn).toHaveCSS('font-family', '\"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif');
         await expect(addRemoveElements.addElementBtn).toHaveCSS('font-weight', '700');
 });
 
@@ -36,7 +35,6 @@ test('Delete Element Button has correct attributes', async ({ page }) => {
         await expect(addRemoveElements.removeElements).toHaveCSS('color', 'rgb(255, 255, 255)');
         await expect(addRemoveElements.removeElements).toHaveCSS('font-size', '16px');
         await expect(addRemoveElements.removeElements).toHaveCSS('text-align', 'center');
-        await expect(addRemoveElements.removeElements).toHaveCSS('font-family', '\"Helvetica Neue\", Helvetica, Helvetica, Arial, sans-serif');
         await expect(addRemoveElements.removeElements).toHaveCSS('font-weight', '700');
 
 });

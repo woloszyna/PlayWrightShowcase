@@ -15,6 +15,9 @@ export class registerPage {
     readonly password: Locator;
     readonly confirmPassword: Locator;
     readonly regBtn: Locator;
+    public pwd: number;
+    public emailAddressValue: string;
+    public passwordValue: string;
     
     constructor(page: Page) {
         this.regModal = page.locator('.registration-page');
@@ -30,6 +33,9 @@ export class registerPage {
         this.password = page.locator('#Password');
         this.confirmPassword = page.locator('#ConfirmPassword');
         this.regBtn = page.getByRole('button', { name: 'Register' });
+        this.pwd = ((new Date()).getTime() & 0xffff);
+        this.emailAddressValue = ('12'+this.pwd + '@gmail.com').toString();
+        this.passwordValue = ('12'+this.pwd).toString();
         
     }
 
@@ -53,10 +59,7 @@ export class registerPage {
     }
 
     async provideMaleEmailAddress() {
-        const date = ((new Date()).getTime() & 0xffff);
-        const emailAddress = date + '@gmail.com';
-
-        this.emailAddress.fill(emailAddress);
+        this.emailAddress.fill(this.emailAddressValue);
     }
 
     async provideMaleCompanyName() {
@@ -68,15 +71,23 @@ export class registerPage {
     }
 
     async provideMalePassword() {
-        this.password.fill('password123');
+        this.password.fill(this.passwordValue);
     }
 
     async provideMalePasswordConfirmatiom() {
-        this.confirmPassword.fill('password123');
+        this.confirmPassword.fill(this.passwordValue);
     }
 
     async clickRegButton() {
         this.regBtn.click();
+    }
+
+    async returnEmail() {
+        return this.emailAddressValue;
+    }
+
+    async returnPassword() {
+        return this.passwordValue;
     }
 
 }

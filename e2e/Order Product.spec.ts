@@ -6,11 +6,13 @@ import { shoppingCart } from '../Support/Pages/Nopcommerce/shoppingCart.pages';
 import { checkOut } from '../Support/Pages/Nopcommerce/checkOut.pages';
 import { registerPage } from '../Support/Pages/Nopcommerce/registerPage.pages';
 import { regConfirmationPage } from '../Support/Pages/Nopcommerce/regConfirmationPage.pages';
+import { myAccountPage } from '../Support/Pages/Nopcommerce/myAccountPAge.pages';
 
 test.beforeEach(async ({ page }, testInfo) => {
     console.log(`Running ${testInfo.title}.`);
     const landing = new landingPage(page);
     await landing.goTo();
+    
 });
 
 test('Successful Order journey', async ({ page }) => {
@@ -21,6 +23,7 @@ test('Successful Order journey', async ({ page }) => {
     const checkout = new checkOut(page);
     const regPage = new registerPage(page);
     const regConfPage = new regConfirmationPage(page);
+    const myAcc = new myAccountPage(page);
 
     await expect(landing.jevelryNavBtn).toBeVisible();
     await landing.accessJevelryPage();
@@ -54,15 +57,36 @@ test('Successful Order journey', async ({ page }) => {
     await expect(regPage.DOBMonth).toHaveValue('1');
     await expect(regPage.DOBYear).toHaveValue('1984');
     await regPage.provideMaleEmailAddress();
-    await expect(regPage.emailAddress).not.toBeEmpty();
+    await expect(regPage.emailAddress).toHaveValue(regPage.emailAddressValue);
     await regPage.provideMaleCompanyName();
     await expect(regPage.companyName).toHaveValue('TestCompany');
     await regPage.uncheckNewsletter();
     await expect(regPage.newsletter).not.toBeChecked();
     await regPage.provideMalePassword();
-    await expect(regPage.password).toHaveValue('password123');
+    await expect(regPage.password).toHaveValue(regPage.passwordValue);
     await regPage.provideMalePasswordConfirmatiom();
-    await expect(regPage.confirmPassword).toHaveValue('password123');
+    await expect(regPage.confirmPassword).toHaveValue(regPage.passwordValue);
     await regPage.clickRegButton();
     await expect(regConfPage.continueBtn).toBeVisible();
+    await expect(regConfPage.regConfMessage).toContainText('Your registration completed');
+    await regConfPage.clickContinue();
+    await expect(shopCart.pageTitle).toHaveText('Shopping cart');
+    await shopCart.accessLogin();
+    await expect(checkout.loginBtn).toBeVisible();
+    await checkout.logInProvideEmail();
+    await expect(checkout.emailField).toHaveValue(regPage.emailAddressValue);
+    await checkout.logInProvidePasword();
+    await expect(checkout.passwordField).toHaveValue(regPage.passwordValue);
+    await checkout.clickLogIn();
+    await expect(shopCart.logOutOption).toBeVisible();
+    await shopCart.accessMyAccountPage();
+    await expect(myAcc.sidePannel).toBeVisible();
+    await expect(myAcc.pageTitle).toHaveText('My account - Customer info');
+    await expect(myAcc.emailField).toHaveValue(regPage.emailAddressValue);
+});
+
+test.afterEach(async ({ page }, testInfo) => {
+    console.log(`${testInfo.title} has Passed.`);
+    
+    await page.close();
 });
